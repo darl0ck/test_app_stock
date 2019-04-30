@@ -47,10 +47,12 @@ export default class AddValueInput extends Component {
       API_TOKEN: 'hk67dLRdMrHCHWVK4OkTyDpobkfS5eTbjS4Li5By0sDg006rAtX6mW7QN20l',
     })
       .then(response => {
+        console.info(response.message,'res');
         languages = response.data;
         
         this.setState({
-          suggestions: languages
+          suggestions: languages,
+          message: response.message
         });
 
         return response.data;
@@ -72,7 +74,9 @@ export default class AddValueInput extends Component {
 
   render () {
 
-    const { value, suggestions } = this.state;
+    console.info(this.state);
+
+    const { value, suggestions, message } = this.state;
 
     const inputProps = {
       placeholder: 'Search',
@@ -84,14 +88,14 @@ export default class AddValueInput extends Component {
 
     return (
       <div >
-      <Autosuggest
+{     suggestions ?  <Autosuggest
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
         getSuggestionValue={this.getSuggestionValue}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
-      />
+      /> : message }
       </div>
     );
   }

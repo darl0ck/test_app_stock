@@ -16,22 +16,22 @@ export function fillFromLocalStorage (data) {
   };
 }
 
-export function deleteContact(id) {
+export function deleteContact (id) {
   return function (dispatch) {
     dispatch(remove(id));
   };
 }
 
-export function updateData(data) {
+export function updateData (data) {
   return function (dispatch) {
     dispatch(update(data));
   };
 }
 
-export const remove = (id) => {
+export const remove = id => {
   return {
-      type: 'REMOVE',
-      id: id
+    type: 'REMOVE',
+    id: id
   };
 };
 
@@ -68,17 +68,16 @@ export const data = (state = [], action) => {
       return data;
 
     case 'REMOVE':
-    let filtered = state.filter((data, i) => i !== action.id);
-    localStorage.setItem('data', JSON.stringify(filtered));
-    return filtered;
+      let filtered = state.filter((data, i) => i !== action.id);
+      localStorage.setItem('data', JSON.stringify(filtered));
+      return filtered;
 
     case 'UPDATE_DATA':
-    state = action.data;
+      state = action.data;
 
-    localStorage.setItem('data', JSON.stringify(state));
+      localStorage.setItem('data', JSON.stringify(state));
 
-
-    return state;
+      return state;
 
     default:
       return state;
