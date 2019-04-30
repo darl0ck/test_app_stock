@@ -10,11 +10,15 @@ import StockCard from './Components/stockCard';
 import { Button } from '@material-ui/core';
 import stockdata from 'stock-data.js';
 
-let symbols = new Set();
 let autoUpdate = '';
 
 class App extends Component {
   updateCompanyData = () => {
+    let symbols = new Set();
+
+    for (let el of JSON.parse(localStorage.getItem('data'))) {
+      symbols.add(el.symbol);
+    }
     return stockdata
       .realtime({
         symbols: Array.from(symbols),
@@ -25,11 +29,8 @@ class App extends Component {
       });
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if (!this.props.data.length && localStorage.getItem('data')) {
-      for (let el of JSON.parse(localStorage.getItem('data'))) {
-        symbols.add(el.symbol);
-      }
       this.updateCompanyData();
       this.props.fillFromLocalStorage();
     }
@@ -66,7 +67,6 @@ class App extends Component {
             onkeypress = e => {
               if (e.keyCode === 13) {
                 e.preventDefault();
-                symbols.add(found.symbol);
                 resetInputValue();
 
                 this.props.fetchArticleDetails(found);

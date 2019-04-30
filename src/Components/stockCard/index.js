@@ -29,7 +29,6 @@ export default class StockCard extends Component {
   }
 
   render () {
-    console.info(this.props.data,'table');
     return (
       <Table>
         <TableHead>

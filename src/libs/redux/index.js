@@ -56,7 +56,6 @@ export const fillCompany = data => {
 export const data = (state = [], action) => {
   switch (action.type) {
     case 'ACTIVATE_DATA':
-      console.info(action.data);
       let newData = [...state, Object.assign({}, action.data)];
       localStorage.setItem('data', JSON.stringify(newData));
 
