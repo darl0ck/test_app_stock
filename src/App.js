@@ -27,10 +27,11 @@ class App extends Component {
 
   componentDidMount() {
     if (!this.props.data.length && localStorage.getItem('data')) {
-      this.props.fillFromLocalStorage();
       for (let el of JSON.parse(localStorage.getItem('data'))) {
         symbols.add(el.symbol);
       }
+      this.updateCompanyData();
+      this.props.fillFromLocalStorage();
     }
   }
 
