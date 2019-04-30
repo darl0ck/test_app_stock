@@ -44,7 +44,7 @@ export default class AddValueInput extends Component {
 
     stockdata.search({
       search_term: value,
-      API_TOKEN: 'hk67dLRdMrHCHWVK4OkTyDpobkfS5eTbjS4Li5By0sDg006rAtX6mW7QN20l',
+      API_TOKEN: 'M2DQYMRuTSAQ5aN166eZfvt7PLYvPqEALhapbhVcsxLG2KuMojcOjJJSwXc6',
     })
       .then(response => {
         console.info(response.message,'res');

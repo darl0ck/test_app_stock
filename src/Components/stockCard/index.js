@@ -23,7 +23,7 @@ export default class StockCard extends Component {
     };
   }
 
-  deleteContact = (e, index) => {
+  deleteContact = index => e => {
     e.preventDefault();
     this.state.deleteContact(index);
   }
@@ -48,8 +48,8 @@ export default class StockCard extends Component {
               <TableCell>{el.price}</TableCell>
               <TableCell>{el.currency}</TableCell>
               <TableCell>
-                <Fab size='small' aria-label='Delete' onClick={(e)=>{
-                  this.deleteContact(e,id);
+                <Fab size='small' aria-label='Delete' onClick={()=>{
+                  this.deleteContact(id);
                 }}>
                   <DeleteIcon />
                 </Fab>
