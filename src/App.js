@@ -22,7 +22,7 @@ class App extends Component {
     return stockdata
       .realtime({
         symbols: Array.from(symbols),
-        API_TOKEN: 'M2DQYMRuTSAQ5aN166eZfvt7PLYvPqEALhapbhVcsxLG2KuMojcOjJJSwXc6'
+        API_TOKEN: 'APITOKEN by You'
       })
       .then(response => {
         this.props.updateData(response.data);
